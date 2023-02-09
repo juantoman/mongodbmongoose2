@@ -1,8 +1,28 @@
 import Link from 'next/link'
 import dbConnect from '../lib/dbConnect'
 import Pet from '../models/Pet'
+import useSWR from 'swr'
 
-const Index = ({ pets }) => (
+const fetcher = (url) =>
+  fetch(url)
+    .then((res) => res.json())
+    .then((json) => json.data)
+
+const Index = () => {
+
+  const {
+    data,
+    error,
+    isLoading,
+  } = useSWR(`/api/pets`, fetcher, { refreshInterval: 1000 })
+
+  if (error) return <p>Failed to load</p>
+  if (isLoading) return <p>Loading...</p>
+  if (!data) return null
+
+  const pets=data
+
+  return (
   <>
     {/* Create a card for each pet */}
     {pets.map((pet) => (
@@ -45,7 +65,7 @@ const Index = ({ pets }) => (
       </div>
     ))}
   </>
-)
+)}
 
 /* Retrieves pet(s) data from mongodb database */
 export async function getServerSideProps() {
