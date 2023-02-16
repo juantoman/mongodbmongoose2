@@ -11,16 +11,14 @@ const fetcher = (url) =>
 const Index = () => {
 
   const {
-    data,
+    data:pets,
     error,
     isLoading,
   } = useSWR(`/api/pets`, fetcher, { refreshInterval: 1000 })
 
   if (error) return <p>Failed to load</p>
   if (isLoading) return <p>Loading...</p>
-  if (!data) return null
-
-  const pets=data
+  if (!pets) return null
 
   return (
   <>
@@ -68,18 +66,20 @@ const Index = () => {
 )}
 
 /* Retrieves pet(s) data from mongodb database */
-export async function getServerSideProps() {
-  await dbConnect()
+// export async function getServerSideProps() {
+//   await dbConnect()
 
-  /* find all the data in our database */
-  const result = await Pet.find({})
-  const pets = result.map((doc) => {
-    const pet = doc.toObject()
-    pet._id = pet._id.toString()
-    return pet
-  })
+//   /* find all the data in our database */
+//   const result = await Pet.find({})
+//   // const pets = result.map((doc) => {
+//   //   const pet = doc.toObject()
+//   //   pet._id = pet._id.toString()
+//   //   return pet
+//   // })
 
-  return { props: { pets: pets } }
-}
+//   // return { props: { pets: pets } }
+//   return { props: { } }
+
+// }
 
 export default Index

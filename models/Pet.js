@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, {models} from 'mongoose'
 
 /* PetSchema will correspond to a collection in your MongoDB database. */
 const PetSchema = new mongoose.Schema({
@@ -56,4 +56,4 @@ const PetSchema = new mongoose.Schema({
   },
 })
 
-export default mongoose.models.Pet || mongoose.model('Pet', PetSchema)
+export default mongoose.models?.Pet || mongoose.model('Pet', PetSchema)
