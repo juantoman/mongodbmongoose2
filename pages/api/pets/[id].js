@@ -1,10 +1,10 @@
 import dbConnect from '../../../lib/dbConnect'
 import Pet from '../../../models/Pet'
 
-export default async function handler(req, res) {
+export default async function handler (req, res) {
   const {
     query: { id },
-    method,
+    method
   } = req
 
   await dbConnect()
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       try {
         const pet = await Pet.findByIdAndUpdate(id, req.body, {
           new: true,
-          runValidators: true,
+          runValidators: true
         })
         if (!pet) {
           return res.status(400).json({ success: false })

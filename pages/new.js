@@ -10,7 +10,7 @@ const NewPet = () => {
     diet: [],
     image_url: '',
     likes: [],
-    dislikes: [],
+    dislikes: []
   }
 
   return <Form formId="add-pet-form" petForm={petForm} />

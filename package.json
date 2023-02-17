@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "@next-auth/mongodb-adapter": "^1.1.1",
@@ -14,5 +15,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "swr": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2"
   }
 }

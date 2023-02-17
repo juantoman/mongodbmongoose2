@@ -2,11 +2,10 @@ import '../css/style.css'
 import '../css/form.css'
 import Head from 'next/head'
 import Link from 'next/link'
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider } from 'next-auth/react'
 import Login from '../components/Login'
 
-
-function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
+function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
       <SessionProvider session={session}>
@@ -28,7 +27,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
           ></img>
         </div>
         <div className="grid wrapper">
-          <Component {...pageProps} />     
+          <Component {...pageProps} />
         </div>
       </SessionProvider>
     </>

@@ -13,7 +13,7 @@ const EditPet = () => {
   const {
     data: pet,
     error,
-    isLoading,
+    isLoading
   } = useSWR(id ? `/api/pets/${id}` : null, fetcher)
 
   if (error) return <p>Failed to load</p>
@@ -29,7 +29,7 @@ const EditPet = () => {
     diet: pet.diet,
     image_url: pet.image_url,
     likes: pet.likes,
-    dislikes: pet.dislikes,
+    dislikes: pet.dislikes
   }
 
   return <Form formId="edit-pet-form" petForm={petForm} forNewPet={false} />

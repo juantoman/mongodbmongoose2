@@ -17,7 +17,7 @@ const Form = ({ formId, petForm, forNewPet = true }) => {
     diet: petForm.diet,
     image_url: petForm.image_url,
     likes: petForm.likes,
-    dislikes: petForm.dislikes,
+    dislikes: petForm.dislikes
   })
 
   /* The PUT method edits an existing entry in the mongodb database. */
@@ -29,9 +29,9 @@ const Form = ({ formId, petForm, forNewPet = true }) => {
         method: 'PUT',
         headers: {
           Accept: contentType,
-          'Content-Type': contentType,
+          'Content-Type': contentType
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify(form)
       })
 
       // Throw error with status code in case Fetch API req failed
@@ -55,9 +55,9 @@ const Form = ({ formId, petForm, forNewPet = true }) => {
         method: 'POST',
         headers: {
           Accept: contentType,
-          'Content-Type': contentType,
+          'Content-Type': contentType
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify(form)
       })
 
       // Throw error with status code in case Fetch API req failed
@@ -79,13 +79,13 @@ const Form = ({ formId, petForm, forNewPet = true }) => {
 
     setForm({
       ...form,
-      [name]: value,
+      [name]: value
     })
   }
 
-  /* Makes sure pet info is filled for pet name, owner name, species, and image url*/
+  /* Makes sure pet info is filled for pet name, owner name, species, and image url */
   const formValidate = () => {
-    let err = {}
+    const err = {}
     if (!form.name) err.name = 'Name is required'
     if (!form.owner_name) err.owner_name = 'Owner is required'
     if (!form.species) err.species = 'Species is required'

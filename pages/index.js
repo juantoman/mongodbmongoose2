@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import dbConnect from '../lib/dbConnect'
-import Pet from '../models/Pet'
+// import dbConnect from '../lib/dbConnect'
+// import Pet from '../models/Pet'
 import useSWR from 'swr'
 
 const fetcher = (url) =>
@@ -9,12 +9,11 @@ const fetcher = (url) =>
     .then((json) => json.data)
 
 const Index = () => {
-
   const {
-    data:pets,
+    data: pets,
     error,
-    isLoading,
-  } = useSWR(`/api/pets`, fetcher, { refreshInterval: 1000 })
+    isLoading
+  } = useSWR('/api/pets', fetcher, { refreshInterval: 1000 })
 
   if (error) return <p>Failed to load</p>
   if (isLoading) return <p>Loading...</p>
@@ -63,7 +62,8 @@ const Index = () => {
       </div>
     ))}
   </>
-)}
+  )
+}
 
 /* Retrieves pet(s) data from mongodb database */
 // export async function getServerSideProps() {
@@ -71,14 +71,13 @@ const Index = () => {
 
 //   /* find all the data in our database */
 //   const result = await Pet.find({})
-//   // const pets = result.map((doc) => {
-//   //   const pet = doc.toObject()
-//   //   pet._id = pet._id.toString()
-//   //   return pet
-//   // })
+//   const pets = result.map((doc) => {
+//     const pet = doc.toObject()
+//     pet._id = pet._id.toString()
+//     return pet
+//   })
 
-//   // return { props: { pets: pets } }
-//   return { props: { } }
+//   return { props: { pets: pets } }
 
 // }
 

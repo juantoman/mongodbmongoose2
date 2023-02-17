@@ -4,7 +4,7 @@ import Link from 'next/link'
 import dbConnect from '../../lib/dbConnect'
 import Pet from '../../models/Pet'
 
-/* Allows you to view pet card info and delete pet card*/
+/* Allows you to view pet card info and delete pet card */
 const PetPage = ({ pet }) => {
   const router = useRouter()
   const [message, setMessage] = useState('')
@@ -13,7 +13,7 @@ const PetPage = ({ pet }) => {
 
     try {
       await fetch(`/api/pets/${petID}`, {
-        method: 'Delete',
+        method: 'Delete'
       })
       router.push('/')
     } catch (error) {
@@ -63,7 +63,7 @@ const PetPage = ({ pet }) => {
   )
 }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps ({ params }) {
   await dbConnect()
 
   const pet = await Pet.findById(params.id).lean()
