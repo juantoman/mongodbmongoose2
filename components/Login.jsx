@@ -1,19 +1,20 @@
 import { useSession, signIn, signOut } from "next-auth/react"
+import Button from '@mui/material/Button';
 
 export default function Login() {
   const { data: session } = useSession()
   if (session) {
     return (
       <>
-        `Signed in as {session.user.email} `
-        <button onClick={() => signOut()}>Sign out</button>
+        {session.user.email} 
+        <Button color="inherit" onClick={() => signOut()}>Sign out</Button>
         <br />
       </>
     )
   }
   return (
     <>
-      <button onClick={() => signIn()}>Sign in</button>
+      <Button color="inherit" onClick={() => signIn("google")}>Sign in</Button>
       <br />
     </>
   )

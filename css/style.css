@@ -41,7 +41,7 @@
 .card {
   display: inline-block;
   width: 300px;
-  height: 400px;
+  height: 300px;
   overflow: hidden;
   border: 1.25px solid rgb(233, 233, 233);
   border-radius: 16px;
