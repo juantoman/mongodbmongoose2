@@ -6,7 +6,7 @@ export default function Login() {
   if (session) {
     return (
       <>
-        {session.user.email} 
+        {/*session.user.email*/} 
         <Button color="inherit" onClick={() => signOut()}>Sign out</Button>
         <br />
       </>

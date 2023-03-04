@@ -22,6 +22,7 @@ import Button from '@mui/material/Button';
 import Login from '../components/Login'
 
 const drawerWidth = 240;
+const miniDrawerWith = 8;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -40,7 +41,7 @@ const closedMixin = (theme) => ({
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: `calc(${theme.spacing(miniDrawerWith)} + 1px)`,
   },
 });
 
@@ -120,11 +121,14 @@ export default function MiniDrawer({children}) {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             @MyClassGame
           </Typography>
-          <Button color="inherit"><Login /></Button>
+          <Login />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+            @MyClassGame
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>

@@ -13,7 +13,7 @@ const Index = () => {
     {
       session
       ? <>
-          <div>
+          <div style={{ paddingLeft: '70px' }}>
             <Link href="/">Home</Link>
             <Link href="/new">Add Pet</Link>
           </div>

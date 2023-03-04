@@ -27,9 +27,8 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
             alt="pet care logo"
           ></img>
   </div>*/}
-        <MiniDrawer>
-          <Component {...pageProps} />
-        </MiniDrawer>
+        <MiniDrawer />
+        <Component {...pageProps} />
       </SessionProvider>
     </>
   )
