@@ -5,8 +5,12 @@ import Link from 'next/link'
 import { SessionProvider } from 'next-auth/react'
 import Login from '../components/Login'
 import MiniDrawer from "../components/MiniDrawer"
+import { useTheme } from '@mui/material/styles';
 
 function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
+  const theme = useTheme();
+  const pl=theme.spacing(8)
+
   return (
     <>
       <SessionProvider session={session}>
@@ -28,7 +32,9 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
           ></img>
   </div>*/}
         <MiniDrawer />
-        <Component {...pageProps} />
+        <div style={{ paddingLeft: pl }}>
+          <Component {...pageProps} />
+        </div>
       </SessionProvider>
     </>
   )

@@ -21,7 +21,7 @@ const PetList = () => {
 
   return (
   <>
-    <div className="grid" style={{ paddingLeft: '90px' }}>
+    <div className="grid">
     {/* Create a card for each pet */}
     {pets.map((pet) => (
       <div key={pet._id}>
