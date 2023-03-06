@@ -35,4 +35,6 @@ const EditPet = () => {
   return <Form formId="edit-pet-form" petForm={petForm} forNewPet={false} />
 }
 
+EditPet.auth = true
+
 export default EditPet

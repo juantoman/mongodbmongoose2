@@ -7,6 +7,7 @@ import { SessionProvider, useSession, signIn } from 'next-auth/react';
 import Login from '../components/Login'
 import MiniDrawer from "../components/MiniDrawer"
 import { useTheme } from '@mui/material/styles';
+import { useRouter } from 'next/router'
 
 function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
   const theme = useTheme();
@@ -50,9 +51,10 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
 function Auth({ children }) {
   const { data: session, status } = useSession()
   const isUser = !!session?.user
+  const router = useRouter()
   React.useEffect(() => {
     if (status === "loading") return
-    if (!isUser) signIn()
+    if (!isUser) router.push("/")
   }, [isUser, status])
 
   if (isUser) {

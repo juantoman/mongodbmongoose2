@@ -72,4 +72,6 @@ export async function getServerSideProps ({ params }) {
   return { props: { pet } }
 }
 
+PetPage.auth = true
+
 export default PetPage
