@@ -16,4 +16,6 @@ const NewPet = () => {
   return <Form formId="add-pet-form" petForm={petForm} />
 }
 
+NewPet.auth = true
+
 export default NewPet
