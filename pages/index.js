@@ -10,25 +10,17 @@ const Index = () => {
 
   return (
   <>
-    {
-      session
-      ? <>
+    
           <div>
             <Link href="/">Home</Link>
             <Link href="/new">Add Pet</Link>
           </div>
           <PetList />
-        </>
-      : <div className="top-bar">
-
-          <img
-            id="title"
-            src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Pet_logo_with_flowers.png"
-            alt="pet care logo"></img>
-        </div>
-    }
+        
   </>
   )
 }
+
+Index.auth=true
 
 export default Index

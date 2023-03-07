@@ -1,4 +1,3 @@
-import * as React from 'react';
 import '../css/style.css'
 import '../css/form.css'
 import Head from 'next/head'
@@ -40,7 +39,9 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
             <Component {...pageProps} />
           </Auth>
         ) : (
-          <Component {...pageProps} />
+          <div className="top-bar">
+            <p>No permissions</p>
+          </div>
         )}
         </div>
       </SessionProvider>
@@ -49,6 +50,23 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
 }
 
 function Auth({ children }) {
+  // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
+  const { status } = useSession({ required: false })
+  //const router =useRouter()
+
+  if (status === "loading") {
+    return <div>Loading...</div>
+  }
+
+  if (status === "unauthenticated") {
+    //if (router.asPath!="/") router.push("/")
+    return <div>Not authenticated...</div>
+  }
+
+  return children
+}
+
+/*function Auth({ children }) {
   const { data: session, status } = useSession()
   const isUser = !!session?.user
   const router = useRouter()
@@ -64,6 +82,6 @@ function Auth({ children }) {
   // Session is being fetched, or no user.
   // If no user, useEffect() will redirect.
   return <div>Loading...</div>
-}
+}*/
 
 export default MyApp
